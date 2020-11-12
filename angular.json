@@ -23,9 +23,17 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "src/styles.css",
+              "./node_modules/katex/dist/katex.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/katex/dist/katex.min.js",
+              "node_modules/jquery.fancytree/dist/jquery.fancytree-all-deps.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -110,6 +118,46 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "sunbird": {
+      "root": "projects/sunbird",
+      "sourceRoot": "projects/sunbird/src",
+      "projectType": "library",
+      "prefix": "tm",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/sunbird/tsconfig.lib.json",
+            "project": "projects/sunbird/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/sunbird/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/sunbird/src/test.ts",
+            "tsConfig": "projects/sunbird/tsconfig.spec.json",
+            "karmaConfig": "projects/sunbird/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/sunbird/tsconfig.lib.json",
+              "projects/sunbird/tsconfig.spec.json"
+            ],
             "exclude": [
               "**/node_modules/**"
             ]

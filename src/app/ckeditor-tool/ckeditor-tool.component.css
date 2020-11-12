@@ -1,0 +1,7 @@
+.ck.ck-editor__editable_inline {
+  overflow: auto;
+  padding: 0 var(--ck-spacing-standard);
+  border: 1px solid #ebebeb;
+  margin-bottom: 15px;
+  background-color: white;
+}

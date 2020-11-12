@@ -56,7 +56,7 @@ export const data1 = {
       responseCode: 'OK',
       result: {
           content: {
-            'title': 'Sample Question Set - 1',
+            'title': 'QuestionSet',
             'description': 'Test question set with 5 MCQ questions',
             'mimeType': 'application/vnd.sunbird.quml',
             'subject': ['CBSE Training'],
@@ -117,24 +117,7 @@ export const data1 = {
             'folder': true,
             'children': [
               {
-                'title': 'Node 1',
-                'key': '1'
-              }, {
-                'title': 'Folder 2',
-                'key': '2',
-                'folder': true,
-                'children': [{
-                    'title': 'Node 2.1',
-                    'key': '3'
-                  },
-                  {
-                    'title': 'Node 2.2',
-                    'key': '4'
-                  }
-                ]
-              },
-              {
-                'title': 'Pre number concepts | Chapter Assessment | English | Grade 1',
+                'title': 'Question 1',
                 'index': 1,
                 'identifier': 'do_31302996866482995212931',
                 'code': 'c0f07244-0115-41a7-9963-934ddf2bc680',
@@ -185,7 +168,7 @@ export const data1 = {
                 }]
               },
               {
-                'title': 'Pre number concepts | Chapter Assessment | English | Grade 1',
+                'title': 'Question 2',
                 'identifier': 'do_31302996866482995212932',
                 'index': 2,
                 'code': '77a86bec-c64b-4c4b-9af7-d5e9f8754dc0',
@@ -236,7 +219,7 @@ export const data1 = {
                 }]
               },
               {
-                'title': 'Pre number concepts | Chapter Assessment | English | Grade 1',
+                'title': 'Question 3',
                 'identifier': 'do_31302996866482995212933',
                 'index': 3,
                 'code': '4c969632-0c26-4cb0-9bd3-8a9390e6f8ce',
@@ -287,7 +270,7 @@ export const data1 = {
                 }]
               },
               {
-                'title': 'Pre number concepts | Chapter Assessment | English | Grade 1',
+                'title': 'Question 4',
                 'identifier': 'do_31302996866482995212934',
                 'index': 4,
                 'code': '8c300d47-8851-4cce-985d-b2a48e93741b',
@@ -338,7 +321,7 @@ export const data1 = {
                 }]
               },
               {
-                'title': 'Pre number concepts | Chapter Assessment | English | Grade 1',
+                'title': 'Question 5',
                 'identifier': 'do_31302996866482995212935',
                 'index': 5,
                 'code': '7cd27111-0c87-4e55-8015-bdf51f2d3c64',
@@ -387,6 +370,20 @@ export const data1 = {
                   'type': 'html',
                   'value': '<p><span style="color:#000000;">Option 2 is more appropriate because objects are not kept in a proper order of their lengths.</span></p>'
                 }]
+              },
+              {
+                'title': 'QuestionSet 1',
+                'key': '2',
+                'folder': true,
+                'children': [{
+                  'title': 'Question 1',
+                    'key': '3'
+                  },
+                  {
+                    'title': 'Question 2',
+                    'key': '4'
+                  }
+                ]
               }
             ]
           }

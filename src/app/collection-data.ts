@@ -119,7 +119,7 @@ export const collectionData = {
       'idealScreenDensity': 'hdpi',
       'depth': 1,
       'compatibilityLevel': 1,
-      'name': 'Unit 2',
+      'title': 'Unit 2',
       'status': 'Draft'
     }
   ],
@@ -165,7 +165,7 @@ export const collectionData = {
   'createdBy': '0b96635f-fe2b-4ab0-a511-05cfce8faa3f',
   'compatibilityLevel': 1,
   'userConsent': 'Yes',
-  'title': 'Collection',
+  'title': 'Textbook',
   'resourceType': 'Collection',
   'status': 'Draft'
 }

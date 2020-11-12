@@ -21,17 +21,16 @@ export class FancyTreeComponent implements AfterViewInit, OnChanges {
 
   ngOnChanges() {
     if (this.nodes) {
-      $(this.tree.nativeElement).fancytree({
-        source: [this.nodes]
-      });
+      // $(this.tree.nativeElement).fancytree({
+      //   source: [this.nodes]
+      // });
       const tree = $(this.tree.nativeElement).fancytree('getTree');
-
+      tree.reload([this.nodes]);
       tree.visit((node) => {
         node.setExpanded(true);
-        console.log(node);
       });
-      tree.getNodeByKey('_15').setActive();
-      this.itemSelect.emit(tree.getNodeByKey('_15'));
+      // tree.getNodeByKey('_15').setActive();
+      // this.itemSelect.emit(tree.getNodeByKey('_15'));
     }
   }
 

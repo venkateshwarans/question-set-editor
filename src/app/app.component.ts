@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import * as _ from 'lodash-es';
 import { data1 } from './quml-library-data';
 import { contentTypes } from './contentType-data';
+import { collectionData } from './collection-data';
 enum modeType {
   Editor = 'Editor',
   Player = 'Player',
@@ -40,6 +41,7 @@ export class AppComponent implements OnInit {
     if (!item.folder) {
       this.item = item;
       console.log(this.item.data);
+      this.mode = modeType.Editor;
       this.editorState.question = this.item.data.body;
       this.editorState.solution = this.item.data.solutions[0].value;
       this.editorState.options = this.item.data.interactions.response1.options;
@@ -54,5 +56,10 @@ export class AppComponent implements OnInit {
   selectedContentType(e) {
     this.treeData = data1.data.result.content;
     this.mode = modeType.Editor;
+  }
+
+  switchToCollection() {
+    this.treeData = collectionData;
+    console.log(this.treeData);
   }
 }

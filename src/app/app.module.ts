@@ -10,6 +10,7 @@ import { CkeditorToolComponent } from './ckeditor-tool/ckeditor-tool.component';
 import {CarouselModule} from 'ngx-bootstrap/carousel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContentTypesComponent } from './content-types/content-types.component';
+import { SbFormComponent } from './sb-form/sb-form.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ContentTypesComponent } from './content-types/content-types.component';
     AppComponent,
     FancyTreeComponent,
     CkeditorToolComponent,
-    ContentTypesComponent
+    ContentTypesComponent,
+    SbFormComponent
   ],
   imports: [
     BrowserModule, CarouselModule.forRoot(),

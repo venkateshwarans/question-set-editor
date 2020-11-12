@@ -1,11 +1,13 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Show, SunbirdService } from 'sunbird';
+// import { Show, SunbirdService } from 'sunbird';
 import * as _ from 'lodash-es';
 import { data1 } from './quml-library-data';
+import { contentTypes } from './contentType-data';
 enum modeType {
   Editor = 'Editor',
-  Player = 'Player'
+  Player = 'Player',
+  ContentTypes = 'ContentTypes'
 }
 
 @Component({
@@ -14,16 +16,16 @@ enum modeType {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  show$: Observable<Show>;
   public item;
   editorState: any = {};
   title = 'ckeditor-and-quml-player';
-  public mode: modeType = modeType.Editor;
+  treeData: any;
+  contentTypeCards = _.groupBy(contentTypes, 'category');
+  public mode: modeType;
   QumlPlayerConfig = data1;
 
   @Output() public contentSelect: EventEmitter<{id: string, title: string, parentId?: string}> = new EventEmitter();
-  constructor(private tvmaze: SunbirdService) {
-    this.show$ = this.tvmaze.getShow(336);
+  constructor() {
   }
 
   ngOnInit() {
@@ -43,5 +45,14 @@ export class AppComponent implements OnInit {
       this.editorState.options = this.item.data.interactions.response1.options;
       this.contentSelect.emit({ id: item.data.id, title: item.title, parentId: _.get(item, 'data.parent.id') });
     }
+  }
+
+  public chooseContentType () {
+    this.mode = modeType.ContentTypes;
+  }
+
+  selectedContentType(e) {
+    this.treeData = data1.data.result.content;
+    this.mode = modeType.Editor;
   }
 }

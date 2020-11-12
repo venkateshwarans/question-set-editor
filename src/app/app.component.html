@@ -5,7 +5,7 @@
 
 
  <div class="flex flex-col">
-  <div class="header border p-2">
+  <div class="header border px-5 py-2 flex flex-row justify-between">
     <div class="four wide column custom-6-wide">
       <div class="content-title-container custom-row-1">
           <label class="content-title popup-item ng-binding ng-scope">QuestionSet title goes here</label>
@@ -15,21 +15,26 @@
               <span class="ng-scope">Edit Details</span>
           </a>
       </div>
-
+    </div>
+    <div class="flex">
+      <button class="mr-2 btn btn-secondary">save</button>
+      <button class="btn btn-success">submit</button>
+    </div>
   </div>
-  </div>
-  <div class="bottom-section p-2 flex flex-row border h-screen">
-    <div class="left-panel border p-2 flex flex-col justify-between">
+  <div class="bottom-section p-2 flex flex-row border h-full">
+    <div class="left-panel border p-2 flex flex-col justify-between h-screen">
       <div class="treebox w-72 h-screen overflow-scroll">
-        <ld-fancy-tree (itemSelect)="onItemSelect($event)"></ld-fancy-tree>
+        <ld-fancy-tree (itemSelect)="onItemSelect($event)" [nodes]="treeData"></ld-fancy-tree>
       </div>
-      <div class="flex flex-end">
-        <button>Add Question Set</button>
-        <button>Add Question</button>
+      <div class="flex justify-center">
+        <button (click)="chooseContentType()">+ Add New</button>
       </div>
     </div>
     <div class="right-panel w-full">
         <div class="row">
+          <div class="col-sm ml-6" *ngIf="mode === 'ContentTypes'">
+            <ld-content-types [contentTypeCards]="contentTypeCards" (emitContentType)="selectedContentType($event)"></ld-content-types>
+          </div>
           <div class="col-sm ml-6" *ngIf="mode === 'Editor'">
             <div class="flex flex-row justify-content-between">
               <h3>

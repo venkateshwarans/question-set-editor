@@ -1,0 +1,14 @@
+<section class="flex flex-col">
+  <div *ngFor="let item of contentTypeCards | keyvalue">
+    <h4>
+      {{contentTypeCards[item.key][0].categoryName}}
+    </h4>
+    <div class="flex flex-wrap">
+      <aside class="item items-center flex from-gray-100" (click)="selectContentType($event, value)" *ngFor="let value of item.value">
+        <div>{{value.name}}</div>
+        <!-- <div>{{value.type}}</div> -->
+        <br>
+      </aside>
+    </div>
+  </div>
+</section>

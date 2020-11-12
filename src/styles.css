@@ -456,10 +456,15 @@ blockquote footer {
   padding: 1.5rem 0;
 }
 
+.from-gray-100	{background-color: #edf2f7;}
 
 .flex {
   display: flex;
 }
+
+.flex-wrap	{flex-wrap: wrap;}
+.flex-wrap-reverse	{flex-wrap: wrap-reverse;}
+.flex-no-wrap	{flex-wrap: nowrap;}
 
 .flex-row	{flex-direction: row;}
 .flex-row-reverse	{flex-direction: row-reverse;}
@@ -755,7 +760,7 @@ blockquote footer {
 .h-auto	{height: auto;}
 .h-px	{height: 1px;}
 .h-full	{height: 100%;}
-.h-screen	{height: calc(100vh - 100px)}
+.h-screen	{height: calc(100vh - 200px)}
 
 
 ul {

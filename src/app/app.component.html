@@ -48,26 +48,7 @@
           </ld-content-types>
         </div>
         <div class="col-sm ml-6" *ngIf="mode === 'Editor'">
-          <div class="flex flex-row justify-content-between">
-            <h3>
-              Editor
-            </h3>
-            <button type="button" (click)="changeMode('Player')" class="btn btn-primary btn-sm">Preview</button>
-          </div>
           <div class="card">
-            <div class="card-header">
-              <div class="row justify-content-between">
-                <div class="col-4">
-                  <i class="fa fa-reply mr-2 text-primary" aria-hidden="true"></i><i class="fa fa-share text-primary"
-                    aria-hidden="true"></i>
-                </div>
-                <div class="col-4 text-right">
-                  <i class="fa fa-clone mr-2 text-primary" aria-hidden="true"></i>
-                  <i class="fa fa-trash-o mr-2 text-primary" aria-hidden="true"></i>
-                  <i class="fa fa-cog text-primary" aria-hidden="true"></i>
-                </div>
-              </div>
-            </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
                 <ld-sb-form [editor]="objectType"></ld-sb-form>
@@ -179,7 +160,7 @@
               </li>
             </ul>
           </div>
-          <button type="button" class="btn btn-outline-primary mt-4">Add Question</button>
+          <!-- <button type="button" class="btn btn-outline-primary mt-4">Add Question</button> -->
         </div>
         <div class="col-sm ml-6" *ngIf="mode === 'Player'">
           <div class="flex flex-row justify-content-between">

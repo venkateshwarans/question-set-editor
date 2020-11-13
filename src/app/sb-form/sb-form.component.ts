@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'ld-sb-form',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sb-form.component.css']
 })
 export class SbFormComponent implements OnInit {
+  @Input() editor: any;
 
   constructor() { }
 

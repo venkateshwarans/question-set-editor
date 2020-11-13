@@ -1,6 +1,105 @@
-<div class="flex flex-col">
 
-  <div class="header border px-5 py-2 flex flex-row justify-between">
+<div *ngIf="!objectType" class="flex items-center justify-center h-screen">
+  <button class="btn btn-warning mr-2" (click)="switchObjectType('Collection'); objectType = 'Collection'">Collection Editor</button>
+  <button class="btn btn-info" (click)="switchObjectType('Question'); objectType = 'Question'">QuestionSet Editor</button>
+</div>
+
+<!-- COLLECTION EDITOR-->
+<div *ngIf="objectType === 'Collection'">
+
+  <div class="header border px-3 py-2 flex flex-row justify-between">
+    <div class="four wide column custom-6-wide">
+      <div class="content-title-container custom-row-1">
+        <label class="content-title popup-item">Collection title goes here</label>
+      </div>
+      <div class="row custom-row-2">
+        <a class="btn at-btn at-btn-ok">
+          <button class="btn btn-link p-0 m-0">Edit Details</button>
+        </a>
+      </div>
+    </div>
+    <div class="flex items-center">
+      <div class="flex items-center">
+        <button class="mr-2 btn btn-secondary">save</button>
+        <button class="btn mr-2 btn-success">submit</button>
+        <button class="btn btn-danger" (click)="goBack()">Close</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="bottom-section p-2 flex flex-row border h-full">
+
+    <div class="left-panel border p-2 flex flex-col justify-between h-screen">
+      <div class="treebox w-72 h-screen overflow-scroll">
+        <ld-fancy-tree (itemSelect)="onItemSelect($event)" [nodes]="treeData"></ld-fancy-tree>
+      </div>
+      <div class="flex justify-around">
+        <button>+ Add Sibling</button>
+        <button>+ Add Child</button>
+      </div>
+    </div>
+
+
+    <div class="right-panel w-full">
+      <div class="row">
+        <div class="col-sm ml-6" *ngIf="mode === 'ContentTypes'">
+          <ld-content-types [contentTypeCards]="contentTypeCards" (emitContentType)="selectedContentType($event)">
+          </ld-content-types>
+        </div>
+        <div class="col-sm ml-6" *ngIf="mode === 'Editor'">
+          <div class="flex flex-row justify-content-between">
+            <h3>
+              Editor
+            </h3>
+            <button type="button" (click)="changeMode('Player')" class="btn btn-primary btn-sm">Preview</button>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <div class="row justify-content-between">
+                <div class="col-4">
+                  <i class="fa fa-reply mr-2 text-primary" aria-hidden="true"></i><i class="fa fa-share text-primary"
+                    aria-hidden="true"></i>
+                </div>
+                <div class="col-4 text-right">
+                  <i class="fa fa-clone mr-2 text-primary" aria-hidden="true"></i>
+                  <i class="fa fa-trash-o mr-2 text-primary" aria-hidden="true"></i>
+                  <i class="fa fa-cog text-primary" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <ld-sb-form [editor]="objectType"></ld-sb-form>
+              </li>
+            </ul>
+          </div>
+          <button type="button" class="btn btn-outline-primary mt-4">Add Resource</button>
+        </div>
+        <div class="col-sm ml-6" *ngIf="mode === 'Player'">
+          <div class="flex flex-row justify-content-between">
+            <h3>QuML Player
+            </h3>
+            <button (click)="changeMode('Editor')" type="button" class="btn btn-primary btn-sm">Editor</button>
+          </div>
+          <div class="border">
+            <quml-player [QumlPlayerConfig]="QumlPlayerConfig"></quml-player>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+</div>
+
+<!-- QUESTION SET  EDITOR-->
+
+<div class="flex flex-col" *ngIf="objectType === 'Question'">
+
+  <div class="header border px-3 py-2 flex flex-row justify-between">
     <div class="four wide column custom-6-wide">
       <div class="content-title-container custom-row-1">
         <label class="content-title popup-item ng-binding ng-scope">QuestionSet title goes here</label>
@@ -12,15 +111,16 @@
       </div>
     </div>
     <div class="flex">
-      <button class="btn mr-2 btn-warning" (click)="switchToCollection()">Switch to collection Editor</button>
-      <button class="mr-2 btn btn-secondary">save</button>
-      <button class="btn btn-success">submit</button>
+      <div class="flex items-center">
+        <button class="mr-2 btn btn-secondary">save</button>
+        <button class="btn mr-2 btn-success">submit</button>
+        <button class="btn btn-danger" (click)="goBack()">Close</button>
+      </div>
     </div>
   </div>
 
 
   <div class="bottom-section p-2 flex flex-row border h-full">
-
 
     <div class="left-panel border p-2 flex flex-col justify-between h-screen">
       <div class="treebox w-72 h-screen overflow-scroll">
@@ -69,25 +169,13 @@
                   <div class="col-sm-6" *ngFor="let option of editorState.options">
                     <ld-ckeditor-tool [editorDataInput]="option.body"></ld-ckeditor-tool>
                   </div>
-                  <div class="col-sm-6">
-                    <!-- <ld-ckeditor-tool></ld-ckeditor-tool> -->
-                  </div>
-                  <div class="col-sm-6">
-                    <!-- <ld-ckeditor-tool></ld-ckeditor-tool> -->
-                  </div>
-                  <div class="col-sm-6">
-                    <!-- <ld-ckeditor-tool></ld-ckeditor-tool> -->
-                  </div>
-                  <div class="col-sm-6">
-                    <!-- <ld-ckeditor-tool></ld-ckeditor-tool> -->
-                  </div>
                 </div>
                 <h6 class="card-title">Solution</h6>
                 <ld-ckeditor-tool [editorConfig]="editorConfig" (editorDataOutput)="editorDataHandler($event, 'answer')"
                   [editorDataInput]="editorState.solution" [editorId]="'solutions_editor'"></ld-ckeditor-tool>
               </li>
               <li class="list-group-item">
-                <ld-sb-form></ld-sb-form>
+                <ld-sb-form [editor]="objectType"></ld-sb-form>
               </li>
             </ul>
           </div>

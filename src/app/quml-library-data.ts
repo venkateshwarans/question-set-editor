@@ -377,7 +377,8 @@ export const data1 = {
                 'folder': true,
                 'children': [{
                   'title': 'Question 1',
-                    'key': '3'
+                  'key': '3',
+                  'body': '<div class=\'question-body\'>Question body</div>',
                   },
                   {
                     'title': 'Question 2',

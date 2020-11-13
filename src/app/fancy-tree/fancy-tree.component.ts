@@ -24,11 +24,12 @@ export class FancyTreeComponent implements AfterViewInit, OnChanges {
       // $(this.tree.nativeElement).fancytree({
       //   source: [this.nodes]
       // });
-      const tree = $(this.tree.nativeElement).fancytree('getTree');
-      tree.reload([this.nodes]);
-      tree.visit((node) => {
-        node.setExpanded(true);
-      });
+      // console.log(Boolean($(this.tree.nativeElement)));
+      // const tree = $(this.tree.nativeElement).fancytree('getTree');
+      // tree.reload([this.nodes]);
+      // tree.visit((node) => {
+      //   node.setExpanded(true);
+      // });
       // tree.getNodeByKey('_15').setActive();
       // this.itemSelect.emit(tree.getNodeByKey('_15'));
     }
@@ -38,7 +39,7 @@ export class FancyTreeComponent implements AfterViewInit, OnChanges {
     let options: any = {
       extensions: ['glyph'],
       clickFolderMode: 3,
-      source: [data1.data.result.content],
+      source: [this.nodes] || [data1.data.result.content],
       glyph: {
         preset: 'awesome4',
         map: {
@@ -56,5 +57,11 @@ export class FancyTreeComponent implements AfterViewInit, OnChanges {
     };
     options = { ...options, ...this.options };
     $(this.tree.nativeElement).fancytree(options);
+    const tree = $(this.tree.nativeElement).fancytree('getTree');
+    tree.visit((node) => {
+        node.setExpanded(true);
+      });
+      // tree.getNodeByKey('_15').setActive();
+      // this.itemSelect.emit(tree.getNodeByKey('_15'));
   }
 }
